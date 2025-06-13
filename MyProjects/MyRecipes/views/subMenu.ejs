@@ -1,0 +1,17 @@
+<%- include("partials/header.ejs") %>
+<form id="subMenuForm" action="/subMenu" method="get">
+    <input type="hidden" name="subCategory" id="selectedSubCategory">
+    <div id="subMenu" class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        <% subCategories.forEach(sub => { %>
+            <div class="col menu-item" data-value="<%= sub.value %>" role="button">
+                <div class="card">
+                    <img src="images/Meat/<%= sub.image %>" alt="<%= sub.name %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= sub.name %></h5>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</form>
+<%- include("partials/footer.ejs") %>

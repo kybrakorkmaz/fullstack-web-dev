@@ -1,0 +1,205 @@
+/* Fontlar */
+@import url("https://fonts.googleapis.com/css2?family=Italianno&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Genel Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background-color: #3c2b2b;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  padding: 2% 0;
+}
+
+/* Header */
+header {
+  background-color: #FAF19B;
+  position: relative;
+}
+
+#banner {
+  margin-left: 10%;
+}
+
+#banner h1 {
+  margin-top: 5%;
+  font-family: "Italianno";
+  font-size: 4rem;
+}
+
+/* Menü/Kartlar */
+#menu, #recipe, #subMenu {
+  margin: 5% 15%;
+}
+
+.card {
+  margin: 1% auto;
+  height: 250px;
+  width: 300px;
+  border-radius: 8px;
+  color: #ccc;
+  background: linear-gradient(rgba(101, 36, 141, 0.815), rgba(98, 68, 22, 0.371));
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.card:hover {
+  border: 3.5px solid #241e1e;
+  color: #3B3030;
+}
+
+/* Arama */
+.search-container {
+  width: 600px;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-container input[type="text"] {
+  width: 100%;
+  padding-left: 2%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.search-container input[type="text"]:hover, 
+.search-container input[type="text"]:active,
+.search-container input[type="text"]:focus {
+  outline: none;
+  border-color: chocolate;
+  box-shadow: 0 0 0 2px #4b3636;
+}
+
+.search-container button {
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.search-container button:hover {
+  background-color: #664343;
+}
+
+.search-container button:focus,
+.search-container button:active {
+  background-color: #3B3030;
+}
+
+/* Tarif Detayları */
+.recipe {
+  margin: 5% 25%;
+  text-align: center;
+  color: #FFDAB3;
+  font-family: "San Serif";
+}
+
+.recipe h3 {
+  font-family: "Italianno";
+  font-size: 2.5rem;
+}
+
+.recipe img {
+  margin: 5% 0 2%;
+  width: 350px;
+  border: 2px solid #241e1e;
+  border-radius: 8px;
+}
+
+/* Footer: her zaman altta */
+footer {
+  flex-shrink: 0;
+  height: 250px;
+  background-color: #FAF19B;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.footer-background {
+  background-image: url("images/footer-banner.png");
+  opacity: 0.35;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.footer-content {
+  margin-top: 6%;
+  position: relative;
+  z-index: 1;
+  color: black;
+  font-family: "Italianno";
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-links i:hover {
+  color: #664343;
+}
+
+/* Alert */
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  border: 1px solid #241e1e;
+  border-radius: 6px;
+  margin: 20px auto;
+  width: 80%;
+}
+.alert .btn{
+  background-color: #f44336;
+  border-color: #80251e;
+  border: none;
+}
+.alert .btn:hover{
+  background-color: #692b27;
+}
+.alert-dismissible .btn-close {
+  color: white;
+  background: none;
+}
+
+.alert-dismissible .btn-close:hover {
+  color: #000;
+}
+.invisible {
+display: none;
+visibility: hidden;
+   }

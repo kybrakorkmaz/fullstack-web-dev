@@ -1,0 +1,28 @@
+<%- include("partials/header.ejs") %>
+
+<form id="recipeForm" action="/recipe" method="get">
+    <input type="hidden" name="recipe" id="selectedRecipe">
+    <input type="hidden" name="isDrink" id="isDrink">
+    <% if (locals.menu) { %>
+    <div id="recipe" class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        <% menu.forEach(recipe => { %>
+            <div class="col recipe-item" data-value="<%= recipe.idMeal || recipe.idDrink %>" 
+                <% if (!recipe.idMeal) { %>
+                    data-isDrink="true" 
+                <% } else { %>
+                    data-isDrink="false" 
+                <% } %>
+                role="button">
+                <div class="card">  
+                    <img src="<%= recipe.strMealThumb || recipe.strDrinkThumb %>" alt="recipe image">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= recipe.strMeal || recipe.strDrink %></h5>
+                    </div>
+                </div>
+            </div>
+    <% }); %>
+    </div>
+   <% } else { %>
+         <p>Bu kategori için tarif bulunamadı.</p>
+   <% } %>
+<%- include("partials/footer.ejs") %>
