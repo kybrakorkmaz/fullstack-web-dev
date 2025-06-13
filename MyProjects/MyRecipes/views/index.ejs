@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") %>
+<form class="search-container" action="/search" method="get">
+    <input id="search-input" type="text" placeholder="Type a recipe" name="searchq">
+    <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
+</form> 
+<form id="menuForm" action="/menu" method="GET">
+    <input type="hidden" name="category" id="selectedCategory">
+    <div id="menu" class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        <% categories.forEach(category => { %>
+            <div class="col menu-item" data-value="<%= category.value %>" role="button">
+                    <div class="card">
+                        <img src="images/menu/<%= category.image %>" alt="<%= category.name %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= category.name %></h5>
+                        </div>
+                    </div>
+                </div> 
+        <% }) %>
+    </div>
+</form>
+   
+<%- include("partials/footer.ejs") %>

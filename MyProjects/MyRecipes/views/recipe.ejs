@@ -1,0 +1,33 @@
+<%- include("partials/header.ejs") %>
+<form id="instructionForm" action="/instruction" method="get">
+    <% if (locals.recipe) {%>
+        <div class="recipe">
+            <% recipe.forEach(item => { %>
+                <h3><%= item.strMeal || item.strDrink %></h3>
+                <img src="<%= item.strMealThumb || item.strDrinkThumb %>" alt="">
+                <h6>Category: <%= item.strCategory || "unknown" %></h6>
+                <h6>Country: <%= item.strArea || "unknown"  %></h6>
+                <h6>Ingredients</h6>
+                <p>
+                   
+                    <% let i = 1; %>
+                    <% while (i <= 15) { // max 20 varsayalım, sonsuz döngüden kaçınmak için %>
+                        <% 
+                            let ingredient = item["strIngredient" + i];
+                            let measure = item["strMeasure" + i];
+                        %>
+                        <% if (ingredient && ingredient.trim() !== '') { %>
+                            <%= measure ||"measure depends on preference" %> <%= ingredient %>,
+                        <% } %>
+                        <% i++; %>
+                    <% } %>
+                </p>
+                <h6>Instructions</h6>
+                <p><%= item.strInstructions %></p>
+            <%}); %>
+        </div>
+    <%} else {%>
+        <p>Seçilen tarif bulunamadı</p>
+    <% } %>
+</form>
+<%- include("partials/footer.ejs") %>

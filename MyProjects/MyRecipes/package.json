@@ -1,0 +1,28 @@
+{
+  "name": "myrecipes",
+  "version": "1.0.0",
+  "description": "Recipes from different countires",
+  "license": "ISC",
+  "author": "Kübra Korkmaz [kybra.korkmaz@gmail.com]",
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": ">=14.x"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^1.9.0",
+    "body-parser": "^2.2.0",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}
