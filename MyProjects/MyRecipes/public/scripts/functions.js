@@ -3,7 +3,7 @@ $(function () {
   getRecipeById();
   subMenuCategory();
   inputFromBar();
-  bringAlert()
+  bringAlert();
 });
 
 
