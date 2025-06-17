@@ -5,7 +5,7 @@ import axios from "axios";
 import flash from "connect-flash";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const API_URL = "https://www.themealdb.com/api/json/v1/1/";
 const API_URL_DRINKS = "https://www.thecocktaildb.com/api/json/v1/1/";
@@ -53,7 +53,9 @@ function getSubCategories(mainCategory) {
 app.get("/", (req, res) => {
   res.render("index.ejs", { categories });
 });
-
+app.get("/navbar", (req, res)=>{
+  res.render("index.ejs", { categories });
+});
 // === Arama – yalnızca burada flash kullanılacak ===
 app.get("/search", async (req, res) => {
   try {
@@ -72,8 +74,13 @@ app.get("/search", async (req, res) => {
        req.flash("error", "No recipes found for the given query.");
       return res.redirect("/");
     }
-
-    res.render("recipe.ejs", { recipe: recipes });
+    //console.log("recipe length:", recipes.length);
+    if(recipes.length === 1){
+      res.render("recipe.ejs", { recipe: recipes });
+    }else{
+      res.render("menu.ejs", { menu: recipes });
+    }
+    
   } catch (error) {
     console.error("API error:", error);
     req.flash("error", "An error occurred while fetching recipes.");

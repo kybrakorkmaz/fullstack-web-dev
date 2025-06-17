@@ -12,9 +12,11 @@
 
 html, body {
   height: 100%;
+  width: 100%;
   background-color: #3c2b2b;
   display: flex;
   flex-direction: column;
+   min-height: 100vh; /* görünüm yüksekliği kadar alan kapla */
 }
 
 main {
@@ -26,12 +28,27 @@ main {
 header {
   background-color: #FAF19B;
   position: relative;
+  width:100%;
+}
+.nav-item{
+  margin-left: auto;
+  margin-right: 2%;
+}
+.nav-tabs .nav-link.active{
+  background-color:#4b3636;
+  border-color:#3c2b2b;
+  border: none;
+  color: #FAF19B;
+}
+.nav-tabs .nav-link.active:hover{
+  background-color: #664343;
 }
 
-#banner {
-  margin-left: 10%;
+#banner img{
+  width: 100%;
+  height: auto;
+  min-width: 200px;
 }
-
 #banner h1 {
   margin-top: 5%;
   font-family: "Italianno";
@@ -40,22 +57,29 @@ header {
 
 /* Menü/Kartlar */
 #menu, #recipe, #subMenu {
-  margin: 5% 15%;
+  margin: 5% auto;
+  justify-content: center;
+  display: flex;
+  width: 100%;
 }
 
 .card {
-  margin: 1% auto;
-  height: 250px;
-  width: 300px;
   border-radius: 8px;
   color: #ccc;
   background: linear-gradient(rgba(101, 36, 141, 0.815), rgba(98, 68, 22, 0.371));
 }
+.menu-item, .recipe-item{
+  margin: 2% 1%;
+  max-height: 250px;
+  height: 100%;
+  max-width: 300px;
+  width: 100%;
+}
 
 .card img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 180px;
+  object-fit:cover;
   border-radius: 8px;
   display: block;
 }
@@ -64,14 +88,22 @@ header {
   border: 3.5px solid #241e1e;
   color: #3B3030;
 }
-
+.card-title{
+  font-size: 1.1rem;
+  text-align: center;
+  justify-content: center;
+  padding: 2% 2%;
+  height: 35px;
+}
 /* Arama */
 .search-container {
-  width: 600px;
-  margin: 30px auto;
+  max-width: 600px;
+  width: 100%;
+  margin: 5% auto 0;
   display: flex;
-  justify-content: center;
   gap: 10px;
+  padding: 0 16px; /* YANA BOŞLUK EKLER */
+  box-sizing: border-box;
 }
 
 .search-container input[type="text"] {
@@ -92,6 +124,7 @@ header {
 .search-container button {
   border-radius: 4px;
   background-color: #fff;
+    border: none;
 }
 
 .search-container button:hover {
@@ -118,7 +151,8 @@ header {
 
 .recipe img {
   margin: 5% 0 2%;
-  width: 350px;
+  max-width: 350px;
+  width: 100%;
   border: 2px solid #241e1e;
   border-radius: 8px;
 }
@@ -126,31 +160,30 @@ header {
 /* Footer: her zaman altta */
 footer {
   flex-shrink: 0;
-  height: 250px;
   background-color: #FAF19B;
-  position: relative;
   width: 100%;
   overflow: hidden;
+  position: relative;
+  min-height: 250px; /* <-- sabit yükseklik yerine min-height */
 }
 
 .footer-background {
-  background-image: url("images/footer-banner.png");
+   background-image: url("images/footer-banner.png");
   opacity: 0.35;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
 }
 
 .footer-content {
-  margin-top: 6%;
+  padding: 40px 20px;
   position: relative;
   z-index: 1;
-  color: black;
+  text-align: center;
   font-family: "Italianno";
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bolder;
 }
 
@@ -203,3 +236,77 @@ footer {
 display: none;
 visibility: hidden;
    }
+@media (max-width: 760px) {
+  #banner{
+    align-items: center;
+  }
+    #banner h1{
+      padding-left: auto;
+      padding-right: 2%;
+        text-align: center;
+    }
+   .footer-content{
+    margin-top: 20%;
+   }
+}
+
+@media (min-width: 760px) {
+  #banner-icon{
+    display: flex;
+    justify-content: center;
+  }
+  #banner h1{
+    margin: 0;
+    text-align: center;
+  }
+  #banner img{
+    width: 100%;
+    max-width: 350px;
+  }
+  .menu-item, .recipe-item{
+  margin: 1% 1%;
+  max-height: 250px;
+  max-width: 250px;
+}
+.footer-content{
+  margin-top: 14%;
+}
+
+}
+
+@media (min-width: 800px) {
+  .menu-item, .recipe-item{
+    max-width: 265px;
+  }
+  .footer-content{
+    margin-top: 15%;
+  }
+}
+
+@media (min-width: 1024px) {
+  #banner {
+    display: flex;
+    justify-content: center;
+    margin: 2% 5%;
+
+  }
+
+  #banner h1 {
+    font-size: 4rem;
+    margin: 0;
+    text-align: left;
+  }
+
+  #banner-icon {
+    max-width: 300px;
+    height: auto;
+    margin:0;
+  }
+  .menu-item, .recipe-item{
+    max-width:300px;
+  }
+  .footer-content {
+    margin-top: 8%;
+    text-align: center;
+  }
+}
