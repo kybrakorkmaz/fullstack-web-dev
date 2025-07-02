@@ -1,0 +1,117 @@
+<%- include("partials/header.ejs") %>
+
+<form method="POST" action="/search">
+  <div class="container mt-5" id="search-area">
+    <div class="position-relative mb-4">
+      <label for="exampleDataList" class="form-label">Nihongo Shaberu!</label>
+      <img src="/images/こ_ん_に_ち_は_1_-removebg-preview.png"
+           alt="yotsuba-konnichiwa"
+           id="konnichiwa-banner">
+    </div>
+
+    <div class="d-flex flex-wrap gap-2" id="search-row">
+      <div class="dropdown">
+        <input type="hidden" name="wordType" id="wordTypeInput" value="<%= wordType || 'Verbs' %>">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+          <%= wordType || 'Select Type' %>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#" data-value="Nouns">Nouns</a></li>
+          <li><a class="dropdown-item" href="#" data-value="Verbs">Verbs</a></li>
+          <li><a class="dropdown-item" href="#" data-value="Adjectives">Adjectives</a></li>
+          <li><a class="dropdown-item" href="#" data-value="Particles">Particles</a></li>
+          <li><a class="dropdown-item" href="#" data-value="Counters">Counters</a></li>
+        </ul>
+      </div>
+
+      <div class="position-relative w-100">
+        <input class="form-control" id="exampleDataList" name="query" placeholder="Type to search..." value="<%= locals.query || '' %>">
+        <span class="clear-icon">❌</span>
+        <span class="search-icon" role="button" tabindex="0">🔍</span>
+      </div>
+      <datalist id="datalistOptions">
+        <option value="Mother">
+        <option value="Red">
+        <option value="Milk">
+        <option value="Car">
+        <option value="Book">
+      </datalist>
+    </div>
+  </div>
+
+  <div class="side-banner">
+    <img src="images/yotsuba-sunflower-removebg-preview.png" alt="yotsuba-sunflower">
+  </div>
+
+  <div id="look-up">
+
+    <div class="btn-group-vertical" id="lookup-btn-group">
+      <input type="hidden" name="level" id="levelInput" value="<%= locals.level || '' %>">
+      <button type="button" class="btn btn-primary <%= locals.level === 'Common' ? 'active' : '' %>" value="Common">Common</button>
+      <button type="button" class="btn btn-primary <%= locals.level === 'JLPT N1' ? 'active' : '' %>" value="JLPT N1">JLPT N1</button>
+      <button type="button" class="btn btn-primary <%= locals.level === 'JLPT N2' ? 'active' : '' %>" value="JLPT N2">JLPT N2</button>
+      <button type="button" class="btn btn-primary <%= locals.level === 'JLPT N3' ? 'active' : '' %>" value="JLPT N3">JLPT N3</button>
+      <button type="button" class="btn btn-primary <%= locals.level === 'JLPT N4' ? 'active' : '' %>" value="JLPT N4">JLPT N4</button>
+      <button type="button" class="btn btn-primary <%= locals.level === 'JLPT N5' ? 'active' : '' %>" value="JLPT N5">JLPT N5</button>
+    </div>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Words</h5>
+
+    <% if (locals.target_words && locals.target_words.length > 0) { %>
+      <% locals.target_words.forEach(word => { %>
+        <h6>
+          <%= word.japanese.map(j => {
+            let w = j.word || '';
+            let r = j.reading || '';
+            return `${w} (${r})`;
+          }).join(", ") %>
+        </h6>
+
+        <h6 class="card-text part-of-speech">Part of Speech</h6>
+        <p><%= word.senses.map(sense => sense.parts_of_speech.join(", ")).join("; ") %></p>
+
+        <h6 class="card-text definitions">Definitions</h6>
+        <p><%= word.senses.map(sense => sense.english_definitions.join(", ")).join("; ") %></p>
+
+        <h6 class="card-text notes">Notes</h6>
+        <p>Common:
+          <% if (word.is_common) { %>
+            Yes
+          <% } else { %>
+            No
+          <% } %>
+        </p>
+      <% }); %>
+
+    <% } %>
+
+    <% if (locals.no_result_message) { %>
+      <p class="text-warning"><%= locals.no_result_message %></p>
+    <% } %>
+
+    <% if (locals.error) { %>
+      <p class="text-danger"><%= locals.error %></p>
+    <% } %>
+
+    <% if (!locals.target_words.length && !locals.no_result_message && !locals.error) { %>
+      <p>Search a word to learn!</p>
+
+      <h6 class="card-text part-of-speech">Part of Speech</h6>
+      <p>N/A</p>
+
+      <h6 class="card-text examples">Definitions</h6>
+      <p>N/A</p>
+
+      <h6 class="card-text notes">Notes</h6>
+      <p>N/A</p>
+    <% } %>
+  </div>
+</div>
+
+
+  </div>
+</form>
+
+<%- include("partials/footer.ejs") %>

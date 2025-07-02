@@ -1,0 +1,325 @@
+/* Güncellenmiş Google Fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+  background: #FEFFA7;
+  color: #222;
+}
+
+.container {
+  max-width: 85%;
+  margin-top: 10%;
+  margin-left: 5%;
+  padding: 0 1rem;
+  position: relative;
+}
+
+#konnichiwa-banner {
+  object-fit: contain;
+  position: absolute;
+  top: -70%;
+  right: 0;
+  height: 200px;
+  width: auto;
+  transform: rotate(10deg);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+#konnichiwa-banner img {
+  position: relative;
+}
+#look-up {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-left: 25%;
+  align-items: flex-start; /* Card büyüyünce butonlar büyümesin */
+}
+
+.btn-group-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  max-width: 220px;
+}
+
+.btn-group-vertical button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #16C47F;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn-group-vertical button:hover {
+  background-color: #A1EEBD;
+}
+.btn-group-vertical button:focus{
+  background-color: hsl(140, 63%, 22%);
+}
+.btn-group-vertical .btn.active,
+.btn-group-vertical button.active {
+  background-color: hsl(140, 63%, 22%) !important;
+}
+.card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+  flex-grow: 1;
+  max-width: 70%;
+  max-height: 400px;      /* İstediğin maksimum yükseklik */
+  overflow-y: auto;       /* Dikeyde scroll */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.card-body h5 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.card-body h6 {
+  margin: 0;
+  font-weight: 600;
+  color: #555;
+}
+
+.card-body p {
+  margin: 0;
+  color: #333;
+  font-weight: 400;
+}
+
+/***** Datalist properties (Arama çubuğu) *****/  
+#exampleDataList:focus {
+  border-color: #FE4F2D !important;
+  outline: 2px solid #FA7070 !important;
+  box-shadow: 0 0 0 0.15rem #FA707055 !important;
+}
+
+#exampleDataList {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-width: 0.5ch;
+  border-style: solid;
+  border-color: #FA7070;
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  flex-grow: 1;
+}
+
+#exampleDataList:hover {
+  border-color: #FE4F2D;
+}
+
+/***** Dropdown properties *****/  
+.dropdown-menu {
+  border-color: #FA7070;
+}
+
+.dropdown-toggle {
+  background-color: #FA7070;
+  max-width: 100%;
+  border-width: 0.5ch;
+  border-style: solid;
+  border-color: #FA7070;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dropdown-toggle:focus,
+.dropdown-toggle:hover {
+  background-color: #FE4F2D;
+  border-color: #FE4F2D !important;
+  outline: 2px solid #FA7070 !important;
+  box-shadow: 0 0 0 0.15rem #FA707055 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #FA7070;
+  color: white;
+}
+
+/***** Responsive Adjustments *****/
+@media (max-width: 992px) {
+  #konnichiwa-banner img {
+    position: absolute !important;
+    right: 0 !important;
+    left: auto !important;
+    top: 0 !important;
+    height: 120px;
+    margin-bottom: 1rem;
+    transform: rotate(10deg);
+  }
+
+  #look-up,
+  #search-row,
+  .form-label {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .btn-group-vertical {
+    max-width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-group-vertical button {
+    flex: 1 1 auto;
+    max-width: 150px;
+  }
+
+  .card {
+    min-width: 100%;
+  }
+
+  .form-label {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  #search-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-check-list {
+    width: 90%;
+  }
+}
+
+/***** Form Check alanları *****/
+.form-label {
+  text-align: left;
+  width: 100%;
+  max-width: 100%;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-left: 15rem;
+}
+
+/***** Arama Satırı ve Banner Görselliği *****/
+#search-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin-left: 15rem;
+  max-width: 75%;
+  position: relative;
+  z-index: 10;
+}
+
+.dropdown {
+  flex-shrink: 0;
+}
+
+.side-banner img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  top: 1%;
+  left: 5%;
+}
+.position-relative {
+  position: relative;
+}
+
+.search-icon,
+.clear-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.search-icon {
+  right: 2.5rem; /* sola biraz boşluk bırak */
+}
+
+.clear-icon {
+  right: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  /* Mobilde görseller gizlensin */
+  #konnichiwa-banner,
+  .side-banner {
+    display: none !important;
+  }
+
+  #look-up {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #lookup-btn-group,
+  .form-check-list {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto;
+  }
+
+  #look-up .card {
+    max-width: 100% !important;
+    margin-bottom: 1.5rem;
+  }
+
+  #search-row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  #search-row .dropdown,
+  #search-row .form-control {
+    width: 100%;
+  }
+}
+
+footer{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 5%;
+}
+footer a{
+  text-decoration: none;
+  color: #FF9F00;
+
+}
+
+footer a:hover{
+  color: #FA812F;
+}
+#info-card{
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
